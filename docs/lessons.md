@@ -101,6 +101,64 @@ LinkedIn、X 和邮件通讯上有二十多万工程师关注他，他的使命�
 
 **下一讲**：前置条件——账号、工具、分别要花多少钱（p002 [01:44]）。
 
+**实际仓库里装了什么**（2026-11-20 从三个公开仓库查到的真实结构，讲师在 P2 只报了名字和用途）
+
+*TicketBay 根目录*：
+
+```
+.claude/  .devcontainer/  .github/
+app/ components/ lib/      Next.js 应用
+drizzle/                   数据库迁移
+e2e/                       端到端测试
+help/                      产品帮助文档（4 篇）
+mcp/server.ts              MCP server，就写在仓库里
+box                        边界盒子启动脚本
+AGENTS.md  CLAUDE.md
+.gitleaks.toml             密钥泄漏扫描
+docker-compose.yml
+```
+
+四个细节：
+
+- `box` 脚本是仓库自带的，P11 演示的 `./box bash` 不是课外工具
+- `mcp/server.ts` 已在仓库里，P36–P40 的 server 就在这个文件上做
+- `.gitleaks.toml` 说明仓库自己配了密钥扫描——「代码里不能有钥匙」的自动化检查
+- `help/` 下四篇：AI agents 与 API key、订票与费用、早鸟与折扣、退款政策——正是 MCP 的 `search_docs` 要返回的原文
+
+*技能仓库 `skills/skills/` 九个*，与模块一一对应：
+
+| 技能 | 用在哪 |
+|---|---|
+| write-great-skill | 模块 2：怎么写出能触发的技能 |
+| mutation-testing | 模块 3：变异测试 |
+| legacy-testing | 模块 3：遗留代码测试 |
+| grill-me | 模块 4：让 Agent 拷问计划 |
+| adversarial-tester | 模块 4：对抗式测试 |
+| pr-triage / pr-tour | 模块 4：PR 分类与导览 |
+| bug-triage | 模块 7：邮件 loop 用的那个 |
+| agent-safety-audit | 模块 6–7：上线前安全审计 |
+
+*第二大脑模板*：
+
+```
+decisions/   一个决定一个文件
+guidelines/  准则
+intents/     意图
+notes/       笔记
+projects/    项目
+sources/     来源
+inbox/       先捕获，后整理
+skills/      ask-brain / capture / lint / triage
+index.md     Agent 先读这个
+install.mjs  一条命令装到每台机器
+sync.mjs     同步
+taste.md     品味（P54 专门讲）
+```
+
+`inbox/` 是关键设计：**capture 先扔进去，triage 再归类，lint 补索引和报死链**。捕获和整理分开，才不会因为「不知道放哪」而漏记。
+
+*kit*：学员专属，不公开，内容是写给 Agent 读的分步指南。
+
 **这一讲和本仓库的关系**：三个公开仓库都能直接克隆。`ticket-bay` 是真业务层，替换本仓库里重建的 `app/store.mjs`；`skills` 和 `brain-template` 对应模块 2 和 5。
 
 ---
